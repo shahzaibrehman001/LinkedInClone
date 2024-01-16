@@ -1,0 +1,43 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <a [routerLink]="['/home']" class="logo"><img src="assets\linkedin.png" alt="linkedIn Logo"></a>
+
+    <div class="search-box">
+      <img src="assets\Search.png" alt="">
+      <input type="text" placeholder="Search">
+    </div>
+
+  </div>
+  
+  <div class="navbar-center">
+    <ul>
+      <li><a [routerLink]="['/home']" class="active-link"><img src="assets\home.png" alt=""><span>Home</span></a></li>
+      <li><a [routerLink]="['/home']" ><img src="assets\network.png" alt=""><span>My Network</span></a></li>
+      <li><a [routerLink]="['/home']" ><img src="assets\briefcase.png" alt=""><span>Jobs</span></a></li>
+      <li><a [routerLink]="['/home']" ><img src="assets\chat.png" alt=""><span>Messaging</span></a></li>
+      <li><a [routerLink]="['/home']" ><img src="assets\bell.png" alt=""><span>Notifications</span></a></li>
+    </ul>
+  </div>
+
+  <div class="navbar-right">
+    <img src="assets\myPic.png" alt="" class="nav-profile-img">
+    <button type="button" (click)="toggleMenu()">Me <img src="assets\down.png" alt="" class="nav-profile-dropdown"></button>
+  </div>
+
+  
+    <div *ngIf="isDropdownOpen$ | async" class="dropdown-content">
+      <div class="profile-menu">
+        <div class="user-info">
+          <img src="assets\myPic.png" alt="">
+          <div>
+            <h3>Shahzaib Rehman</h3>
+            <a [routerLink]="['/profile']">See your Profile</a>
+          </div>
+        </div>
+        <hr>
+        <div class="profile-menu-link">
+          <a href="/">Sign Out</a>
+        </div>
+      </div>
+    </div>
+</nav>

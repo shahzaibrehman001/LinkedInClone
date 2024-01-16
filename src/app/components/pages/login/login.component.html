@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="nav">
+    <h2>Linked<span>in</span></h2>
+    <div class="btn">
+      <div class="btn1">Join now</div>
+      <div class="btn2">Sign in</div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="form">
+      <p>Welcome to your professional community</p>
+      <form>
+        <div class="form-container">
+          <div class="input-email">
+            <label>Email or Phone</label>
+            <br>
+            <input type="text" placeholder="Email is admin" name="Username" [(ngModel)]="username" />
+          </div>
+          <div class="input-password">
+            <label>Password</label>
+            <br>
+            <input type="password" placeholder="Password is 12345" name="password" [(ngModel)]="password" />
+          </div>
+        </div>
+      </form>
+
+      <a href="#" style="color: #045be6">Forget password?</a>
+      <button class="sign-in" (click)="LoginUser()">Sign in</button>
+      <div class="line">
+        <hr />
+        <span>or</span>
+        <hr />
+      </div>
+      <button class="sign">Sign in with Google</button>
+    </div>
+    <div class="image">
+      <img src="assets/signInbg.png" alt="" />
+    </div>
+  </div>
+</div>

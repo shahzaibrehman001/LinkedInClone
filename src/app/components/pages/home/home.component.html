@@ -1,0 +1,256 @@
+<div class="container">
+  <div class="left-sidebar">
+    <div class="sidebar-profile-box">
+      <img src="assets\coverPic.png" alt="" width="100%" />
+      <div class="sidebar-profile-info">
+        <a [routerLink]="['/profile']"><img src="assets\myPic.png" alt="" /></a>
+        <h1>Shahzaib Rehman</h1>
+        <h3>Angular Developer</h3>
+        <ul>
+          <li>Your Profile Views <span>100</span></li>
+          <li>Your Post Views <span>50</span></li>
+          <li>Your Connections <span>200</span></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-profile-link">
+        <div style="margin-top: 10px">Access exclusive tool &amp; insights</div>
+
+        <a [routerLink]="['/home']" style="margin-bottom: 10px"
+          ><div class="square"></div>
+          <strong> Try Premium for free</strong></a
+        >
+      </div>
+    </div>
+
+    <div class="sidebar-activity">
+      <h3>RECENT</h3>
+      <a href=""><img src="assets\dev.png" alt="" />Web Development</a>
+      <a href=""><img src="assets\frontend.png" alt="" />FrontEnd</a>
+      <a href=""><img src="assets\angular.png" alt="" />Angular</a>
+      <a href=""><img src="assets\TS.png" alt="" />TypeScript</a>
+      <a href=""><img src="assets\design.png" alt="" />Web Design</a>
+      <a href=""><img src="assets\coding.png" alt="" />Coding</a>
+      <h3 style="color: #045be6"><strong>GROUPS</strong></h3>
+      <a href=""
+        ><img src="assets\group.png" alt="" />Web Development For EveryOne</a
+      >
+      <a href=""><img src="assets\group.png" alt="" />Angular Developers</a>
+      <a href=""><img src="assets\group.png" alt="" />Learn TypeScript</a>
+      <h3 style="color: #045be6"><strong>HASHTAGS</strong></h3>
+      <a href=""
+        ><img
+          src="assets\hash.png"
+          alt=""
+          style="color: #777"
+        />WebDevelopment</a
+      >
+      <a href=""
+        ><img src="assets\hash.png" alt="" style="color: #777" />Angular</a
+      >
+      <a href=""
+        ><img
+          src="assets\hash.png"
+          alt=""
+          style="color: #777"
+        />UserInterface</a
+      >
+
+      <div class="discover-more-link">
+        <a [routerLink]="['/home']" style="color: black; font-size: 14px">Discover More</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="create-post">
+      <div class="create-post-input">
+        <img src="assets\myPic.png" alt="" />
+        <textarea
+          rows="3"
+          placeholder="Write your post..."
+          [(ngModel)]="newPost.description"
+        ></textarea>
+      </div>
+      <div class="create-post-links">
+        <li><img src="assets\photo.png" alt="" />Photo</li>
+        <li><img src="assets\video.png" alt="" />Video</li>
+        <li><img src="assets\event.png" alt="" />Event</li>
+        <li><img src="assets\article.png" alt="" />Write Article</li>
+        <li><button (click)="createNewPost()">Share Post</button></li>
+      </div>
+    </div>
+    <hr />
+
+    <div class="post" *ngFor="let Post of created_posts">
+      <div class="post-author">
+        <img src="{{ Post.image }}" alt="" />
+        <div>
+          <h1>{{ Post.name }}</h1>
+          <small>{{ Post.designation }}</small>
+          <small
+            >1 min .<img
+              src="assets\world.png"
+              style="height: 15px; width: 15px"
+              alt=""
+          /></small>
+        </div>
+      </div>
+      <p>
+        {{ Post.description }}
+        <img
+          src="{{ Post.postImage }}"
+          alt=""
+          width="100%"
+          style="margin-top: 15px"
+        />
+      </p>
+
+      <div class="post-stats">
+        <div>
+          <img src="assets\like.png" alt="" />
+          <img src="assets\heart.png" alt="" />
+          <img src="assets\clap.png" alt="" />
+          <span class="liked-users">{{ Post.liked }} likes</span>
+        </div>
+        <div>
+          <span
+            >{{ Post.comments }} comments &middot;
+            {{ Post.shares }} shares</span
+          >
+        </div>
+      </div>
+
+      <div class="post-activity">
+        <div class="post-activity-link">
+          <img src="assets\like.png" alt="" />
+          <button (click)="likePost(Post)">Like</button>
+        </div>
+
+        <div *ngIf="showLikeAlert" class="like-alert">You liked the post!</div>
+
+        <div class="post-activity-link">
+          <img src="assets\comment.png" alt="" />
+          <button>Comment</button>
+        </div>
+
+        <div class="post-activity-link">
+          <img src="assets\share.png" alt="" />
+          <button>Share</button>
+        </div>
+
+        <div class="post-activity-link">
+          <img src="assets\send.png" alt="" />
+          <button>Send</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="post" *ngFor="let post of posts">
+      <div class="post-author">
+        <img src="{{ post.image }}" alt="" />
+        <div>
+          <h1>{{ post.name }}</h1>
+          <small>{{ post.designation }}</small>
+          <small
+            >{{ post.time }}h .<img
+              src="assets\world.png"
+              style="height: 15px; width: 15px"
+              alt=""
+          /></small>
+        </div>
+      </div>
+      <p>
+        {{ post.description }}
+        <img
+          src="{{ post.postImage }}"
+          alt=""
+          width="100%"
+          style="margin-top: 15px"
+        />
+      </p>
+
+      <div class="post-stats">
+        <div>
+          <img src="assets\like.png" alt="" />
+          <img src="assets\heart.png" alt="" />
+          <img src="assets\clap.png" alt="" />
+          <span class="liked-users"
+            >Sharjeel Shahid and {{ post.liked }} others</span
+          >
+        </div>
+        <div>
+          <span
+            >{{ post.comments }} comments &middot;
+            {{ post.shares }} shares</span
+          >
+        </div>
+      </div>
+
+      <div class="post-activity">
+        <div class="post-activity-link">
+          <img src="assets\like.png" alt="" />
+          <button (click)="likePost(post)">Like</button>
+        </div>
+
+        <div *ngIf="showLikeAlert" class="like-alert">You liked the post!</div>
+
+        <div class="post-activity-link">
+          <img src="assets\comment.png" alt="" />
+          <button>Comment</button>
+        </div>
+
+        <div class="post-activity-link">
+          <img src="assets\share.png" alt="" />
+          <button>Share</button>
+        </div>
+
+        <div class="post-activity-link">
+          <img src="assets\send.png" alt="" />
+          <button>Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-sidebar">
+    <div class="sidebar-news">
+      <img src="assets\imp.png" alt="" class="info-icon" />
+      <h3><strong>Add to your feed</strong></h3>
+
+      <div class="follow-people" *ngFor="let user of users">
+        <div class="follow-people-prof">
+          <img [src]="user.image" alt="" />
+        </div>
+        <div class="follow-people-details">
+          <h1>{{ user.name }}</h1>
+          <small>{{ user.designation }}</small>
+          <button
+            (click)="toggleFollow(user)"
+            [ngClass]="{ following: user.isFollowing }"
+          >
+            {{ user.isFollowing ? "Following" : "+ Follow" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="read-more-link">
+        <a [routerLink]="['/home']"><strong>View all recommendations -></strong></a>
+      </div>
+    </div>
+    <div class="sidebar-useful-links">
+      <a [routerLink]="['/home']">About</a>
+      <a [routerLink]="['/home']">Accessibility</a>
+      <a [routerLink]="['/home']">Help Center</a>
+      <a [routerLink]="['/home']">Privacy &amp; Terms</a>
+      <a [routerLink]="['/home']">Ad Choices</a>
+      <a [routerLink]="['/home']">Advertising</a>
+      <a [routerLink]="['/home']">Bussiness Services</a>
+    </div>
+
+    <div class="copyright-msg">
+      <img src="assets\LinkedInFull-removebg-preview.png" alt="" />
+      <p>LinkedIn Corporation &copy; 2023</p>
+    </div>
+  </div>
+</div>
